@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">designPatterns</string>
+    <string name="example_builder_text">%1$s %2$s %3$s</string>
+</resources>
