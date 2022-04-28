@@ -23,7 +23,7 @@ class ExampleViewModel : ViewModel() {
     val exampleFactory = ExampleDataFactory.createSingleData(arrayListOf(0, 1, 2).random()).name
 
     fun getData() {
-        exampleMutableLiveData.postValue(ExampleSingleton.getData())
+        exampleMutableLiveData.postValue(ExampleSingleton.getInstance().createData())
     }
 
 }
