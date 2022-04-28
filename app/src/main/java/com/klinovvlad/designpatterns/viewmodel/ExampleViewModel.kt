@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.klinovvlad.designpatterns.model.builders.ExampleBuilderClass
 import com.klinovvlad.designpatterns.model.ExampleData
 import com.klinovvlad.designpatterns.model.factories.ExampleDataFactory
-import com.klinovvlad.designpatterns.model.ExampleDataHolder
+import com.klinovvlad.designpatterns.model.ExampleSingleton
 
 class ExampleViewModel : ViewModel() {
 
@@ -14,7 +14,8 @@ class ExampleViewModel : ViewModel() {
     val exampleLiveData: LiveData<List<ExampleData>>
         get() = exampleMutableLiveData
 
-    val exampleBuilderClass: ExampleBuilderClass = ExampleBuilderClass.Builder("first")
+    val exampleBuilderClass: ExampleBuilderClass = ExampleBuilderClass.Builder()
+        .firstString("first")
         .secondString("second")
         .thirdString("third")
         .build()
@@ -22,7 +23,7 @@ class ExampleViewModel : ViewModel() {
     val exampleFactory = ExampleDataFactory.createSingleData(arrayListOf(0, 1, 2).random()).name
 
     fun getData() {
-        exampleMutableLiveData.postValue(ExampleDataHolder.createData())
+        exampleMutableLiveData.postValue(ExampleSingleton.getData())
     }
 
 }

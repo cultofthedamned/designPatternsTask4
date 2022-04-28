@@ -6,11 +6,16 @@ class ExampleBuilderClass private constructor(
     val thirdString: String
 ) {
 
-    class Builder(
-        private var firstString: String,
-        private var secondString: String? = null,
-        private var thirdString: String? = null
-    ) {
+    class Builder {
+
+        private var firstString: String = ""
+        private var secondString: String = ""
+        private var thirdString: String = ""
+
+        fun firstString(firstString: String): Builder {
+            this.firstString = firstString
+            return this
+        }
 
         fun secondString(secondString: String): Builder {
             this.secondString = secondString
@@ -23,11 +28,7 @@ class ExampleBuilderClass private constructor(
         }
 
         fun build(): ExampleBuilderClass {
-            return ExampleBuilderClass(
-                firstString,
-                secondString ?: "",
-                thirdString ?: ""
-            )
+            return ExampleBuilderClass(firstString, secondString, thirdString)
         }
 
     }
